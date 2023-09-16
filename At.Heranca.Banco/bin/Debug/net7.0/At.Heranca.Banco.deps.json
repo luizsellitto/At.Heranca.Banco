@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "At.Heranca.Banco/1.0.0": {
+        "runtime": {
+          "At.Heranca.Banco.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "At.Heranca.Banco/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
