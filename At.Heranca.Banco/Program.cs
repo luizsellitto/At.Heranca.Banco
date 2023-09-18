@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.ExceptionServices;
 using At.Heranca.Banco.Classes;
-    class Program
+using Microsoft.VisualBasic;
+
+class Program
     {
     static void Main(string[] args)
     {
@@ -76,92 +79,110 @@ using At.Heranca.Banco.Classes;
 
         static void CriarContaEmpresarial(List<Conta> contas, int num)
         {
-        exit3:;
-            Console.Write("Digite o nome do titular: ");
-            string titular = Console.ReadLine();
-            if (titular == "")
-            {
-                Console.WriteLine("O nome do titular não pode ficar vazio, digite um nome válido");
-                goto exit3;
-            }
-        exit4:;
-            Console.Write("Digite o saldo: ");
-            double saldo = double.Parse(Console.ReadLine());
-            if (saldo < 0)
-            {
-                Console.WriteLine("O saldo inicial de uma conta não pode ser negativo");
-                goto exit4;
-            }
-        exit7:;
-            Console.Write("Digite a taxa de anuidade: ");
-            double anuidade = double.Parse(Console.ReadLine());
-            if (anuidade < 0)
-            {
-                Console.WriteLine("A taxa de anuidade de uma conta não pode ser negativa");
-                goto exit7;
-            }
-        exit8:;
-            Console.Write("Digite o limite de empréstimo: ");
-            double lE = double.Parse(Console.ReadLine());
-            if (lE < 0)
-            {
-                Console.WriteLine("O limite de empréstimo de uma conta não pode ser negativo");
-                goto exit8;
-            }
+            yea:;
+            try
+            {   
+            exit3:;
+                Console.Write("Digite o nome do titular: ");
+                string titular = Console.ReadLine();
+                if (titular == "")
+                {
+                    Console.WriteLine("O nome do titular não pode ficar vazio, digite um nome válido");
+                    goto exit3;
+                }
+            exit4:;
+                Console.Write("Digite o saldo: ");
+                double saldo = double.Parse(Console.ReadLine());
+                if (saldo < 0)
+                {
+                    Console.WriteLine("O saldo inicial de uma conta não pode ser negativo");
+                    goto exit4;
+                }
+            exit7:;
+                Console.Write("Digite a taxa de anuidade: ");
+                double anuidade = double.Parse(Console.ReadLine());
+                if (anuidade < 0)
+                {
+                    Console.WriteLine("A taxa de anuidade de uma conta não pode ser negativa");
+                    goto exit7;
+                }
+            exit8:;
+                Console.Write("Digite o limite de empréstimo: ");
+                double lE = double.Parse(Console.ReadLine());
+                if (lE < 0)
+                {
+                    Console.WriteLine("O limite de empréstimo de uma conta não pode ser negativo");
+                    goto exit8;
+                }
 
-            ContaEmpresarial novaContaEm = new ContaEmpresarial(anuidade, lE, 0, num, "BB", titular, saldo);
+                ContaEmpresarial novaContaEm = new ContaEmpresarial(anuidade, lE, 0, num, "BB", titular, saldo);
 
-            contas.Add(novaContaEm);
-            Console.WriteLine("A Conta empresarial foi criada");
+                contas.Add(novaContaEm);
+                Console.WriteLine("A Conta empresarial foi criada");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Dígito inválido, escreva os seus dados novamente");
+                goto yea;
+            }
         }
 
         static void CriarContaEstudantil(List<Conta> contas, int num)
         {
-        exit5:;
-            Console.Write("Digite o nome do titular: ");
-            string titular = Console.ReadLine();
-            if (titular == "")
+            now:;
+            try
             {
-                Console.WriteLine("O nome do titular não pode ficar vazio, digite um nome válido");
-                goto exit5;
-            }
-        exit6:;
-            Console.Write("Digite o saldo: ");
-            double saldo = double.Parse(Console.ReadLine());
-            if (saldo < 0)
-            {
-                Console.WriteLine("O saldo inicial de uma conta não pode ser negativo");
-                goto exit6;
-            }
-        exit9:;
-            Console.Write("Digite o limite do cheque especial: ");
-            double lCE = double.Parse(Console.ReadLine());
-            if (lCE < 0)
-            {
-                Console.WriteLine("O limite do cheque especial de uma conta não pode ser negativo");
-                goto exit9;
-            }
-        exit10:;
-            Console.Write("Digite o CPF: ");
-            string cpf = Console.ReadLine();
-            if (cpf == "")
-            {
-                Console.WriteLine("O CPF não pode ficar vazio, digite um CPF válido");
-                goto exit10;
-            }
-        exit11:;
-            Console.Write("Digite o nome da instituição de ensino: ");
-            string nI = Console.ReadLine();
-            if (nI == "")
-            {
-                Console.WriteLine("O nome da intituição de ensino não pode ficar vazio, digite um nome válido");
-                goto exit10;
-            }
+            exit5:;
+                Console.Write("Digite o nome do titular: ");
+                string titular = Console.ReadLine();
+                if (titular == "")
+                {
+                    Console.WriteLine("O nome do titular não pode ficar vazio, digite um nome válido");
+                    goto exit5;
+                }
+            exit6:;
+                Console.Write("Digite o saldo: ");
+                double saldo = double.Parse(Console.ReadLine());
+                if (saldo < 0)
+                {
+                    Console.WriteLine("O saldo inicial de uma conta não pode ser negativo");
+                    goto exit6;
+                }
+            exit9:;
+                Console.Write("Digite o limite do cheque especial: ");
+                double lCE = double.Parse(Console.ReadLine());
+                if (lCE < 0)
+                {
+                    Console.WriteLine("O limite do cheque especial de uma conta não pode ser negativo");
+                    goto exit9;
+                }
+            exit10:;
+                Console.Write("Digite o CPF: ");
+                string cpf = Console.ReadLine();
+                if (cpf == "")
+                {
+                    Console.WriteLine("O CPF não pode ficar vazio, digite um CPF válido");
+                    goto exit10;
+                }
+            exit11:;
+                Console.Write("Digite o nome da instituição de ensino: ");
+                string nI = Console.ReadLine();
+                if (nI == "")
+                {
+                    Console.WriteLine("O nome da intituição de ensino não pode ficar vazio, digite um nome válido");
+                    goto exit11;
+                }
 
-            ContaEstudante novaContaEs = new ContaEstudante(lCE, cpf, nI, num, "BB", titular, saldo);
+                ContaEstudante novaContaEs = new ContaEstudante(lCE, cpf, nI, num, "BB", titular, saldo);
 
-            contas.Add(novaContaEs);
-            Console.WriteLine("Conta de estudante foi criada");
+                contas.Add(novaContaEs);
+                Console.WriteLine("Conta de estudante foi criada");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Dígito inválido, escreva os seus dados novamente");
+                goto now;
+            }
         }
 
         static void MostrarContas(List<Conta> contas)
@@ -182,61 +203,90 @@ using At.Heranca.Banco.Classes;
 
         static void RealizarSaque(List<Conta> contas)
         {
-            Console.Write("Digite o número da conta: ");
-            int numConta = int.Parse(Console.ReadLine());
+            try
+            {
+                Console.Write("Digite o número da conta: ");
+                int numConta = int.Parse(Console.ReadLine());
 
-            var conta = contas.Find(c => c.Num == numConta);        //No lugar de SingleOrDefault, ele procura em lista, sem ser 
+                var conta = contas.Find(c => c.Num == numConta);    //No lugar de SingleOrDefault, ele procura em lista, sem ser 
                                                                     //criando em classe específica e retorna null caso não tenha
                                                                     //caso tenha, ele retorna o obj do id
+                
+                if (conta != null)
+                {
+                    Console.Write("Digite o valor do saque: ");
+                    double valor = double.Parse(Console.ReadLine());
 
-            if (conta != null)
-            {
-                Console.Write("Digite o valor do saque: ");
-                double valor = double.Parse(Console.ReadLine());
-
-                conta.Sacar(valor);
+                    conta.Sacar(valor);
+                }
+                else
+                {
+                    Console.WriteLine("Número não corresponde a nenhuma conta");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Número não corresponde a nenhuma conta");
-            }
+            Console.WriteLine("Não se pode escrever letras no número da conta");
         }
+    }
 
         static void RealizarDeposito(List<Conta> contas)
         {
-            Console.Write("Digite o número da conta: ");
-            int numConta = int.Parse(Console.ReadLine());
-
-            var conta = contas.SingleOrDefault(c => c.Num == numConta);
-
-            if (conta != null)
+            try
             {
-                Console.Write("Digite o valor do depósito: ");
-                double valor = double.Parse(Console.ReadLine());
+                Console.Write("Digite o número da conta: ");
+                int numConta = int.Parse(Console.ReadLine());
 
-                conta.Depositar(valor);
+                var conta = contas.SingleOrDefault(c => c.Num == numConta);
+
+                if (conta != null)
+                {
+                fim:;
+                    Console.Write("Digite o valor do depósito: ");
+                    double valor = double.Parse(Console.ReadLine());
+                    if (valor > 0)
+                    {
+                        conta.Depositar(valor);
+                    }
+                    else
+                    {
+                        Console.WriteLine("O valor inserido não pode ser negativo");
+                        goto fim;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Número não corresponde a nenhuma conta");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Número não corresponde a nenhuma conta");
+                Console.WriteLine("Não se pode escrever letras no número da conta");
             }
         }
         static void VerificarConta(List<Conta> contas)
         {
-            Console.Write("Digite o número da conta: ");
-            int numConta = int.Parse(Console.ReadLine());
-
-            var conta = contas.SingleOrDefault(c => c.Num == numConta);
-            if (conta != null)
+            try
             {
-                foreach (var c in contas)
+                Console.Write("Digite o número da conta: ");
+                int numConta = int.Parse(Console.ReadLine());
+
+                var conta = contas.SingleOrDefault(c => c.Num == numConta);
+                if (conta != null)
                 {
-                    Console.WriteLine($"Conta número {conta.Num} - Titular: {conta.Titular} - Agência: {conta.Agencia} - Saldo: R${conta.Saldo.ToString("F2")}");
+                    foreach (var c in contas)
+                    {
+                        Console.WriteLine($"Conta número {conta.Num} - Titular: {conta.Titular} - Agência: {conta.Agencia} - Saldo: R${conta.Saldo.ToString("F2")}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Número não corresponde a nenhuma conta");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Número não corresponde a nenhuma conta");
+                Console.WriteLine("Não se pode escrever letras no número da conta");
             }
         }
     }
